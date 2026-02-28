@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worm Gear Solver</title>
+</head>
+<body>
+    <h1>Worm Gear Solver Application</h1>
+    <form id="wormGearSolver">
+        <label for="gearRatio">Gear Ratio:</label>
+        <input type="number" id="gearRatio" name="gearRatio" required>
+        <br>
+        <label for="wormTeeth">Number of Teeth on Worm Wheel:</label>
+        <input type="number" id="wormTeeth" name="wormTeeth" required>
+        <br>
+        <input type="submit" value="Calculate">
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('wormGearSolver').onsubmit = function(event) {
+            event.preventDefault();
+            const gearRatio = parseFloat(document.getElementById('gearRatio').value);
+            const wormTeeth = parseInt(document.getElementById('wormTeeth').value);
+
+            const wormPitchDiameter = gearRatio * wormTeeth;
+            const resultElement = document.getElementById('result');
+            resultElement.innerHTML = `Calculated Worm Pitch Diameter: ${wormPitchDiameter.toFixed(2)}`;
+        };
+    </script>
+</body>
+</html>
